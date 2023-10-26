@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+.selectlayers {
+  margin: 1em;
+}
+a {
+  color: gray !important;
+}

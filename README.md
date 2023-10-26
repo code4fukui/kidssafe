@@ -15,18 +15,12 @@
 - [index.csv](index.csv) - 地図に表示するCSVデータを設定する
 - [kidssafe.js](kidsafe.js) - JavaScriptによるソースコード
 
-## 横展開の仕方
+## 利用方法
 
-1. リポジトリ [kidssafe-template](https://github.com/code4fukui/kidssafe-template/) で、「Use this template」「Create a new repository」する
-2. [アプリ設定](index.html)や[データ](index.csv)を地区に合わせて変更する
+1. リポジトリ [kidssafe-template](https://github.com/code4fukui/kidssafe-template/) で、「Use this template」「Create a new repository」し、「kidssafe-」に続けて地区名などを英数名で設定する （例、kidssafe-okamoto)
+2. [README.md](README.md)、[アプリ設定](index.html)、[データ](index.csv)を地区に合わせて変更する
 3. GitHub Pages(SettingsのPages)を設定し公開する
-
-## 危険箇所編集方法
-
-下記アプリ「緯度経度地図」から該当場所に動かして、Geo3x3をコピーする
-- https://fukuno.jig.jp/app/map/latlng/#%E8%B6%8A%E5%89%8D%E5%B8%82
-
-<img width="511" alt="image" src="https://user-images.githubusercontent.com/1715217/219602296-2d3b72ce-581a-4ba8-8c69-edbe1b95ee76.png">
+4. データの更新方法などは、[kidssafe-template](https://github.com/code4fukui/kidssafe-template/) をご参照ください
 
 ## 開発貢献の仕方
 

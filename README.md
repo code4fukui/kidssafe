@@ -1,38 +1,37 @@
-# キッズセーフ / KidsSafe
+# KidsSafe
 
-- 地域安全マップを作成して、スマホやパソコンで見られる形で共有するツールです
-- ExcelやNumbersを使ってCSVデータを編集しアップロードすることで更新できます
+KidsSafe is a tool to create and share a community safety map on smartphones and computers. Users can edit and upload CSV data using Excel or Numbers to update the map.
 
-## 活用例
+## Demo
+- [Echizen City Kunitaka Area](https://code4fukui.github.io/kunitaka)
+- [Fukui City Natsume Area](https://code4fukui.github.io/kidssafe-natsume)
+- [Echizen City Okamoto Area](https://code4fukui.github.io/kidssafe-okamoto)
 
-- [越前市国高地区](https://code4fukui.github.io/kunitaka)
-- [福井市棗地区](https://code4fukui.github.io/kidssafe-natsume)
-- [越前市岡本地区](https://code4fukui.github.io/kidssafe-okamoto)
+## Features
+- Create and share a community safety map
+- Edit and upload CSV data to update the map
 
-## ソースコード
+## Requirements
+- [Deno](https://deno.land/) to run the development server
 
-- [index.html](index.html) - アプリ設定（都市名、地域名、ソースコード）を設定する
-- [index.csv](index.csv) - 地図に表示するCSVデータを設定する
-- [kidssafe.js](kidsafe.js) - JavaScriptによるソースコード
+## Usage
+1. Create a new repository by using the [kidssafe-template](https://github.com/code4fukui/kidssafe-template/) template, naming it "kidssafe-" followed by the area name.
+2. Customize the [README.md](README.md), [app settings](index.html), and [data](index.csv) to fit the target area.
+3. Set up GitHub Pages (in Settings > Pages) to publish the site.
+4. Refer to the [kidssafe-template](https://github.com/code4fukui/kidssafe-template/) for details on updating the data.
 
-## 利用方法
-
-1. リポジトリ [kidssafe-template](https://github.com/code4fukui/kidssafe-template/) で、「Use this template」「Create a new repository」し、「kidssafe-」に続けて地区名などを英数名で設定する （例、kidssafe-okamoto)
-2. [README.md](README.md)、[アプリ設定](index.html)、[データ](index.csv)を地区に合わせて変更する
-3. GitHub Pages(SettingsのPages)を設定し公開する
-4. データの更新方法などは、[kidssafe-template](https://github.com/code4fukui/kidssafe-template/) をご参照ください
-
-## 開発貢献の仕方
-
-### cloneする
-
-1. [GitHub Desktop](https://desktop.github.com/)をインストール
-2. 緑色のボタン「Code」を押し「Open with GitHub Desktop」を選ぶ
-3. [Deno](https://deno.land/)をインストール
-4. kidssafeのディレクトリ内で下記を実行する
+## Development
+### Clone the repository
+1. Install [GitHub Desktop](https://desktop.github.com/)
+2. Press the green "Code" button and select "Open with GitHub Desktop"
+3. Install [Deno](https://deno.land/)
+4. Run the following in the kidssafe directory:
 ```sh
 deno run --allow-net --allow-read https://taisukef.github.io/liveserver/liveserver.js
 ```
-5. 表示されたリンクをブラウザ開く (例、 [http://[::]:7001/](http://[::]:7001/))
-6. [index.html](index.html) などを、編集する （自動的に変更がブラウザに反映される）
-7. GitHub Desktopで、ブランチを作り、プルリクする
+5. Open the displayed link in a browser (e.g., [http://[::]:7001/](http://[::]:7001/))
+6. Edit files like [index.html](index.html) (changes will be automatically reflected in the browser)
+7. Create a new branch in GitHub Desktop and submit a pull request
+
+## License
+MIT License

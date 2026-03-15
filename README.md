@@ -1,5 +1,7 @@
 # KidsSafe
 
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
 KidsSafe is a tool to create and share a community safety map on smartphones and computers. Users can edit and upload CSV data using Excel or Numbers to update the map.
 
 ## Demo

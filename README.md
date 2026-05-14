@@ -1,38 +1,92 @@
-# キッズセーフ / KidsSafe
+# KidsSafe
 
-- 地域安全マップを作成して、スマホやパソコンで見られる形で共有するツールです
-- ExcelやNumbersを使ってCSVデータを編集しアップロードすることで更新できます
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
 
-## 活用例
+KidsSafe is a simple tool to create and share community safety maps. It's designed to be easily updated by editing CSV files, with no complex database or server setup required.
 
-- [越前市国高地区](https://code4fukui.github.io/kunitaka)
-- [福井市棗地区](https://code4fukui.github.io/kidssafe-natsume)
-- [越前市岡本地区](https://code4fukui.github.io/kidssafe-okamoto)
+The map is mobile-friendly, built with Leaflet, and can be deployed for free on GitHub Pages.
 
-## ソースコード
 
-- [index.html](index.html) - アプリ設定（都市名、地域名、ソースコード）を設定する
-- [index.csv](index.csv) - 地図に表示するCSVデータを設定する
-- [kidssafe.js](kidsafe.js) - JavaScriptによるソースコード
+![KidsSafe user interface showing a map with custom icons, a header with the area name, and a menu button.](https://user-images.githubusercontent.com/155338/235282459-71701331-5079-408c-80a5-f938032738d2.png)
 
-## 利用方法
 
-1. リポジトリ [kidssafe-template](https://github.com/code4fukui/kidssafe-template/) で、「Use this template」「Create a new repository」し、「kidssafe-」に続けて地区名などを英数名で設定する （例、kidssafe-okamoto)
-2. [README.md](README.md)、[アプリ設定](index.html)、[データ](index.csv)を地区に合わせて変更する
-3. GitHub Pages(SettingsのPages)を設定し公開する
-4. データの更新方法などは、[kidssafe-template](https://github.com/code4fukui/kidssafe-template/) をご参照ください
+## Demo
 
-## 開発貢献の仕方
+- [Echizen City Kunitaka Area](https://code4fukui.github.io/kunitaka)
+- [Fukui City Natsume Area](https://code4fukui.github.io/kidssafe-natsume)
+- [Echizen City Okamoto Area](https://code4fukui.github.io/kidssafe-okamoto)
 
-### cloneする
+## Features
 
-1. [GitHub Desktop](https://desktop.github.com/)をインストール
-2. 緑色のボタン「Code」を押し「Open with GitHub Desktop」を選ぶ
-3. [Deno](https://deno.land/)をインストール
-4. kidssafeのディレクトリ内で下記を実行する
-```sh
-deno run --allow-net --allow-read https://taisukef.github.io/liveserver/liveserver.js
+- **Interactive Maps:** Display safety locations with custom icons on a mobile-friendly map.
+- **CSV-Powered:** Manage all map data using simple CSV files, editable in Excel, Numbers, or any text editor.
+- **Layered Data:** Organize points of interest into distinct layers (e.g., "AED Locations," "110番の家").
+- **Easy Deployment:** Publish your map for free using GitHub Pages.
+- **Simple Sharing:** A QR code is automatically generated in the menu for easy sharing.
+
+## How It Works
+
+The map is built from a two-tiered CSV structure:
+
+1.  **`index.csv`:** This is the main configuration file. It defines the *layers* that will appear on the map, linking each layer name to a data file and an icon.
+2.  **Data Files (e.g., `house110.csv`, `aed.csv`):** These files contain the actual location data for each layer, including coordinates (`lat`/`lng` or `Geo3x3`) and other details.
+
+## Usage
+
+1.  **Create Repository:** Create a new repository from the [kidssafe-template](https://github.com/code4fukui/kidssafe-template/). Name it `kidssafe-` followed by your area name.
+2.  **Customize Settings:**
+    -   In `index.html`, update the `city`, `area`, and `githublink` values.
+3.  **Define Layers & Data:**
+    -   Edit `index.csv` to define your map layers.
+    -   Create or update the corresponding data CSV files (e.g., `aed.csv`) with your location data.
+4.  **Deploy:**
+    -   In your new repository, go to `Settings` > `Pages`.
+    -   Under `Build and deployment`, select `GitHub Actions` as the source. This will publish your map automatically.
+
+For more details on updating data, refer to the [kidssafe-template](https://github.com/code4fukui/kidssafe-template/) documentation.
+
+## Data Format
+
+### `index.csv` (Layer Configuration)
+
+This file defines the layers available on the map.
+
+| name | fn | icon |
+| :--- | :--- | :--- |
+| Layer Display Name | Data Filename | Icon Filename |
+
+**Example:**
+```csv
+name,fn,icon
+110番の家,house110.csv,house110_icon.png
+AED,aed.csv,aed.png
+交通事故発生箇所,accident.csv,aioi_8.png
 ```
-5. 表示されたリンクをブラウザ開く (例、 [http://[::]:7001/](http://[::]:7001/))
-6. [index.html](index.html) などを、編集する （自動的に変更がブラウザに反映される）
-7. GitHub Desktopで、ブランチを作り、プルリクする
+
+### Location Data CSV (e.g., `house110.csv`)
+
+These files contain the points for a specific layer. Each row is a point on the map. You must include coordinate columns (`lat` and `lng`, or `Geo3x3`). All other columns will be displayed in the popup info box.
+
+**Example:**
+```csv
+name,address,lat,lng
+"こども110番の家（田中商店）","福井県鯖江市新横江1-1-1",35.943,136.188
+"こども110番の家（鈴木理容所）","福井県鯖江市桜町2-2-2",35.945,136.189
+```
+
+## Development
+
+To run a local development server, you need [Deno](https://deno.land/).
+
+```sh
+# Serve the project directory locally
+deno run -A --watch --allow-net --allow-read https://deno.land/std/http/file_server.ts
+```
+
+## Attribution
+
+- Map tiles by [Geospatial Information Authority of Japan](https://maps.gsi.go.jp/development/ichiran.html).
+
+## License
+
+[MIT](LICENSE)
